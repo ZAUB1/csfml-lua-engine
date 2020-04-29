@@ -4,7 +4,7 @@ GAME = {}
 GAME.OBJECTS = {}
 GAME.CURSOR = {}
 
-RPG.On("ready", function()
+Engine.On("ready", function()
     if (GAME.Main) then
         GAME.Main();
     end
@@ -76,7 +76,7 @@ local CreateObject = function(path) --Main object class
     return GAME.OBJECTS[self.id];
 end
 
-RPG.On("sfEvtMouseButtonPressed", function()
+Engine.On("sfEvtMouseButtonPressed", function()
     local pos_x, pos_y = API.GetCursorPos();
     for _, v in pairs(GAME.OBJECTS) do
         local sprite_x, sprite_y = v.GetPosition();
@@ -94,7 +94,7 @@ RPG.On("sfEvtMouseButtonPressed", function()
     end
 end);
 
-RPG.On("sfEvtMouseMoved", function(data)
+Engine.On("sfEvtMouseMoved", function(data)
     GAME.CURSOR.x = data.mouse.x
     GAME.CURSOR.y = data.mouse.y
 end)

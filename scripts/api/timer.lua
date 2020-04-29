@@ -1,13 +1,13 @@
 Threads = {};
-RPG = {};
+Engine = {};
 Listeners = {};
-RPG.cTick = 1;
+Engine.cTick = 1;
 
 Listeners["ready"] = {};
 
-_G.RPG = RPG;
+_G.Engine = Engine;
 
-RPG.OnTick = function(identifier, cb)
+Engine.OnTick = function(identifier, cb)
     table.insert(Threads, {
         identifier = identifier,
         coroutine = coroutine.create(cb),
@@ -15,13 +15,13 @@ RPG.OnTick = function(identifier, cb)
     });
 end
 
-RPG.Wait = function(time)
+Engine.Wait = function(time)
     local toWait = 0;
     coroutine.yield();
     repeat coroutine.yield(); toWait = toWait + 1 until toWait > time;
 end
 
-RPG.On = function(name, cb)
+Engine.On = function(name, cb)
     if not (Listeners[name]) then
         Listeners[name] = {}
     end
@@ -46,8 +46,8 @@ function stringsplit(inputstr, sep)
 end
 
 function tick()
-    --print("[DEBUG] Lua tick called: " .. RPG.cTick);
-    RPG.cTick = RPG.cTick + 1;
+    --print("[DEBUG] Lua tick called: " .. Engine.cTick);
+    Engine.cTick = Engine.cTick + 1;
 
     for i, thread in ipairs(Threads) do
         local status = coroutine.status(thread.coroutine);
@@ -95,7 +95,7 @@ function event(name, additional)
     end
 end
 
-RPG.Emit = function(name, additional)
+Engine.Emit = function(name, additional)
     return event(name, additional);
 end
 
