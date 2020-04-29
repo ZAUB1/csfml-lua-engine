@@ -1,7 +1,7 @@
 # CSFML LUA ENGINE: Documentation
-From scratch I made this small game engine.
-I originally made this for my epitech graphics projects, using it for your epitech projects will result in a -42.
-Other contributors: Léo Sarochar (worked with the engine on the my_defender project.)
+From scratch I made this small game engine.  
+I originally made this for my epitech graphics projects, using it for your epitech projects will result in a -42.  
+Other contributors: Léo Sarochar (worked with the engine on the my_defender project.)  
 # LUA API
 ## Vector2
 Vector2 are essentially positions, they contain two coordinates x and y.
